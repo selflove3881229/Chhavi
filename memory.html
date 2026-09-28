@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Memory of Your Life ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:white;
+  background:linear-gradient(
+  110deg,
+  #001f3f,
+  #0074d9,
+  #00c2ff,
+  #00f5d4,
+  #4361ee,
+  #7209b7,
+  #b5179e,
+  #f72585,
+  #ff006e,
+  #d90429,
+  #ef233c,
+  #ff5400,
+  #ff9e00,
+  #ffd166
+);
+
+background-size:600% 600%;
+animation:gradientMove 16s ease infinite;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* PASSWORD */
+#passwordScreen{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:url("img/love.jpg") center/cover no-repeat;
+}
+
+.password-box{
+  width:min(420px,92vw);
+  padding:32px 24px;
+  border-radius:24px;
+  text-align:center;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+  backdrop-filter:blur(14px);
+}
+
+.password-box h1{
+  margin-bottom:10px;
+  font-size:30px;
+}
+
+.password-box p{
+  margin-bottom:20px;
+  color:#f5dce7;
+}
+
+#passwordInput{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:14px;
+  outline:bold;
+  background:rgba(255,255,255,.12);
+  color:black;
+  font-size:18px;
+  text-align:center;
+}
+
+#passwordInput::placeholder{
+  color:#e8cbd8;
+}
+
+#passwordButton{
+  width:100%;
+  margin-top:14px;
+  padding:14px 18px;
+  border:0;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:,18px;
+  font-weight:700;
+  color:white;
+  background:linear-gradient(135deg,#ff4f91,#d91b63);
+}
+
+#passwordError{
+  min-height:22px;
+  margin-top:12px;
+  color:black;
+  font-size:16px;
+}
+
+/* MAIN HEADER */
+header{
+  text-align:center;
+  padding:55px 20px 35px;
+}
+
+header h1{
+  font-size:clamp(34px,7vw,65px);
+  text-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+header p{
+  margin-top:12px;
+  font-size:18px;
+}
+
+/* GALLERY */
+.gallery{
+  width:92%;
+  max-width:1250px;
+  margin:auto;
+  padding:20px 0 45px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
+}
+
+.frame{
+  height:190px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  border-radius:20px;
+  border:2px solid rgba(255,255,255,.5);
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  transition:.4s;
+}
+
+.frame:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 20px 45px rgba(0,0,0,.3);
+}
+
+.frame img,
+.frame video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:.5s;
+}
+
+.frame:hover img,
+.frame:hover video{
+  transform:scale(1.1);
+}
+
+.number{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:5;
+  padding:6px 11px;
+  border-radius:20px;
+  background:rgba(0,0,0,.65);
+}
+
+.video-icon{
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(0,0,0,.7);
+}
+
+/* ADD PAGE */
+.bottom-add-page{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:20px 20px 40px;
+}
+
+.add-page-button,
+.back-button{
+  display:inline-block;
+  padding:14px 28px;
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+  background:rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.5);
+  backdrop-filter:blur(10px);
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.add-page-button:hover,
+.back-button:hover{
+  transform:translateY(-5px) scale(1.05);
+  background:rgba(255,255,255,.4);
+}
+
+footer{
+  text-align:center;
+  padding:10px 20px 20px;
+}
+
+/* SECOND PAGE */
+#secondPage{
+  display:none;
+  min-height:100vh;
+  padding:50px 20px 70px;
+  text-align:center;
+  background:linear-gradient(135deg,#667eea,#764ba2,#f093fb);
+  background-size:300% 300%;
+  animation:gradientMove 8s ease infinite;
+}
+
+#secondPage.active{
+  display:block;
+}
+
+.second-container{
+  max-width:900px;
+  margin:auto;
+}
+
+.second-container > h1{
+  font-size:clamp(38px,7vw,65px);
+  text-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.second-card{
+  margin-top:35px;
+  padding:35px 25px;
+  border-radius:30px;
+  background:rgba(255,255,255,.20);
+  border:1px solid rgba(255,255,255,.5);
+  backdrop-filter:blur(15px);
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+/* FIRST MEET PHOTO */
+.first-meet-image{
+  display:block;
+  width:min(92%,520px);
+  max-height:60vh;
+  object-fit:cover;
+  margin:0 auto 28px;
+  border-radius:22px;
+  border:2px solid rgba(255,255,255,.45);
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+/* LETTER */
+.first-meet-letter{
+  width:min(92%,720px);
+  margin:0 auto;
+  padding:28px 24px;
+  border-radius:22px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  text-align:left;
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.first-meet-letter h2{
+  text-align:center;
+  margin-bottom:22px;
+  font-family:Arial,sans-serif;
+  font-size:26px;
+}
+
+#typedLetter{
+  white-space:pre-wrap;
+  line-height:1.9;
+  font-size:18px;
+  min-height:180px;
+}
+
+.typewriter-cursor{
+  display:inline-block;
+  width:2px;
+  height:1.1em;
+  margin-left:3px;
+  vertical-align:-.15em;
+  background:currentColor;
+  animation:blinkCursor .8s steps(1) infinite;
+}
+
+@keyframes blinkCursor{
+  50%{opacity:0}
+}
+
+.second-buttons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:35px;
+}
+
+/* MUSIC */
+#musicButton{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  z-index:5000;
+  border:none;
+  padding:12px 20px;
+  border-radius:30px;
+  color:white;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* VIEWER */
+.viewer{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.95);
+}
+
+.viewer.active{
+  display:flex;
+}
+
+.viewer-content img,
+.viewer-content video{
+  max-width:90vw;
+  max-height:82vh;
+  border-radius:15px;
+  display:block;
+  box-shadow:0 0 50px rgba(255,255,255,.2);
+}
+
+.close{
+  position:fixed;
+  top:15px;
+  right:25px;
+  z-index:10001;
+  color:white;
+  font-size:45px;
+  cursor:pointer;
+}
+
+.nav{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  width:55px;
+  height:55px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  color:white;
+  font-size:32px;
+  cursor:pointer;
+  z-index:10000;
+}
+
+.prev{left:20px}
+.next{right:20px}
+
+.caption{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  text-align:center;
+  font-size:17px;
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+  .gallery{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .frame{
+    height:160px;
+  }
+
+  .prev{left:7px}
+  .next{right:7px}
+  .close{right:15px}
+
+  .second-card{
+    padding:25px 12px;
+  }
+
+  .first-meet-image{
+    width:96%;
+    max-height:55vh;
+  }
+
+  .first-meet-letter{
+    width:96%;
+    padding:22px 18px;
+  }
+
+  #typedLetter{
+    font-size:17px;
+    line-height:1.8;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="passwordScreen">
+  <div class="password-box">
+    <h1>Our Little World ❤️</h1>
+    <p>Password enter karo aur memories unlock karo ✨</p>
+
+    <input
+      id="passwordInput"
+      type="password"
+      inputmode="numeric"
+      autocomplete="off"
+      placeholder="Enter password"
+      aria-label="Password"
+    >
+
+    <button id="passwordButton">
+      Unlock ❤️
+    </button>
+
+    <div id="passwordError"></div>
+  </div>
+</div>
+
+
+<!-- MAIN PAGE -->
+<div id="mainPage" style="display:none;">
+
+  <header>
+    <h1>Best Memory of Your Life ❤️</h1>
+    <p>Some moments are unforgettable...</p>
+  </header>
+
+  <main>
+    <div class="gallery" id="gallery"></div>
+
+    <div class="bottom-add-page">
+      <button class="add-page-button" onclick="openSecondPage()">
+        ➕ Add New Page
+      </button>
+    </div>
+  </main>
+
+  <footer>
+    Made with ❤️ for beautiful memories
+  </footer>
+
+</div>
+
+
+<!-- SECOND PAGE -->
+<section id="secondPage">
+
+  <div class="second-container">
+
+    <h1>Pehli Mulakat ❤️</h1>
+
+    <div class="second-card">
+
+      <!-- YAHAN PEHLI MULAKAT KI PHOTO LAGAO -->
+      <img
+        class="first-meet-image"
+        src="img/Chhavi13.jpg"
+        alt="Hamari Pehli Mulakat ❤️"
+      >
+
+      <!-- LETTER -->
+      <div class="first-meet-letter">
+
+        <h2>Ek Chhota Sa Letter 💌</h2>
+
+        <p id="typedLetter"></p>
+
+      </div>
+
+      <div class="second-buttons">
+
+        <button
+          class="back-button"
+          onclick="backToMain()">
+          ← Back to Memories
+        </button>
+
+        <a
+          href="game.html"
+          class="back-button">
+          Our Next Moment ➜
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music/M1.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton" onclick="toggleMusic()">
+  🎵 Play Music
+</button>
+
+
+<!-- FULL SCREEN VIEWER -->
+<div class="viewer" id="viewer">
+
+  <div class="close" onclick="closeViewer()">×</div>
+
+  <button class="nav prev" onclick="previousMemory()">‹</button>
+
+  <div class="viewer-content" id="viewerContent"></div>
+
+  <button class="nav next" onclick="nextMemory()">›</button>
+
+  <div class="caption" id="caption"></div>
+
+</div>
+
+
+<script>
+
+/* ==================================================
+    MEMORIES
+================================================== */
+
+const memories = [
+
+  {type:"image",src:"img/memory1.jpg",title:"Beautiful Memory ❤️"},
+  {type:"image",src:"img/memory2.jpg",title:"A Special Moment ✨"},
+  {type:"image",src:"img/memory3.jpg",title:"Forever Together 💕"},
+  {type:"image",src:"img/memory4.jpg",title:"Happy Memories 😊"},
+  {type:"video",src:"video1.mp4",title:"Our Special Video 🎥"},
+  {type:"image",src:"img/memory5.jpg",title:"Amazing Day 🌸"},
+  {type:"image",src:"img/memory6.jpg",title:"Sweet Memory 💖"},
+  {type:"image",src:"img/memory7.jpg",title:"Never Forget This ❤️"},
+  {type:"image",src:"img/memory8.jpg",title:"Beautiful Smile 😊"},
+  {type:"video",src:"video2.mp4",title:"Beautiful Moments 🎬"},
+  {type:"image",src:"img/memory9.jpg",title:"Beautiful Smile 😊"},
+  {type:"image",src:"img/memory10.jpg",title:"Beautiful Smile 😊"},
+    {type:"image",src:"img/memory11.jpg",title:"Beautiful Smile 😊"},
+     {type:"image",src:"img/memory12.jpg",title:"Memory 1 ❤️"},
+  {type:"video",src:"video3.mp4",title:"Video 3 🎥"},
+  {type:"image",src:"img/memory13.jpg",title:"Memory 3 🌹"},
+   {type:"image",src:"img/memory14.jpg",title:"Memory 3 🌹"},
+    {type:"image",src:"img/memory15.jpg",title:"Memory 3 🌹"},
+     {type:"image",src:"img/memory16.jpg",title:"Memory 3 🌹"},
+  {type:"video",src:"video4.mp4",title:"Video 4 🎬"},
+   {type:"image",src:"img/memory17.jpg",title:"Memory 3 🌹"},
+    {type:"image",src:"img/memory18.jpg",title:"Memory 3 🌹"},
+     {type:"image",src:"img/memory19.jpg",title:"Memory 3 🌹"},
+      {type:"image",src:"img/memory20.jpg",title:"Memory 3 🌹"},
+      {type:"video",src:"video5.mp4",title:"Video 5 🎬"},
+       {type:"image",src:"img/memory21.jpg",title:"Memory 3 🌹"},
+        {type:"image",src:"img/memory22.jpg",title:"Memory 3 🌹"},
+         {type:"image",src:"img/memory23.jpg",title:"Memory 3 🌹"},
+          {type:"image",src:"img/memory24.jpg",title:"Memory 3 🌹"},
+          {type:"video",src:"video6.mp4",title:"Video 6 🎬"},
+           {type:"image",src:"img/memory25.jpg",title:"Memory 3 🌹"},
+            {type:"image",src:"img/memory26.jpg",title:"Memory 3 🌹"},
+             {type:"image",src:"img/memory27.jpg",title:"Memory 3 🌹"},
+              {type:"image",src:"img/memory28.jpg",title:"Memory 3 🌹"},
+              {type:"video",src:"video7.mp4",title:"Video 7🎬"},
+               {type:"image",src:"img/memory29.jpg",title:"Memory 3 🌹"},
+               {type:"video",src:"video8.mp4",title:"Video7🎬"},
+             
+];
+
+
+/* ==================================================
+   GALLERY
+================================================== */
+const gallery = document.getElementById("gallery");
+
+memories.forEach((memory,index)=>{
+
+  const frame = document.createElement("div");
+
+  frame.className = "frame";
+
+  frame.innerHTML = `
+    <div class="number">${index+1}</div>
+
+    ${
+      memory.type === "image"
+
+      ?
+
+      `<img
+        src="${memory.src}"
+        alt="${memory.title}"
+      >`
+
+      :
+
+      `
+      <video
+        src="${memory.src}"
+        muted
+        playsinline>
+      </video>
+
+      <div class="video-icon">▶</div>
+      `
+    }
+  `;
+
+  frame.onclick = ()=>openViewer(index);
+
+  gallery.appendChild(frame);
+
+});
+
+
+/* ==================================================
+   VIEWER
+================================================== */
+
+const viewer =
+  document.getElementById("viewer");
+
+const viewerContent =
+  document.getElementById("viewerContent");
+
+const caption =
+  document.getElementById("caption");
+
+let currentIndex = 0;
+
+
+function openViewer(index){
+
+  currentIndex = index;
+
+  showMemory();
+
+  viewer.classList.add("active");
+
+  document.body.style.overflow = "hidden";
+}
+
+
+function showMemory(){
+
+  const memory = memories[currentIndex];
+
+  viewerContent.innerHTML = "";
+
+
+  if(memory.type === "video"){
+
+    music.pause();
+
+    musicButton.innerHTML = "🔇 Music Off";
+
+    const video = document.createElement("video");
+
+    video.src = memory.src;
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true;
+
+    viewerContent.appendChild(video);
+
+  }
+
+  else{
+
+    music.play().catch(()=>{});
+
+    musicButton.innerHTML = "🔊 Music On";
+
+    const img = document.createElement("img");
+
+    img.src = memory.src;
+    img.alt = memory.title;
+
+    viewerContent.appendChild(img);
+  }
+
+
+  caption.textContent =
+    `${currentIndex+1} / ${memories.length} — ${memory.title}`;
+}
+
+
+function closeViewer(){
+
+  viewer.classList.remove("active");
+
+  viewerContent.innerHTML = "";
+
+  document.body.style.overflow = "auto";
+
+  music.play().catch(()=>{});
+
+  musicButton.innerHTML = "🔊 Music On";
+}
+
+
+function nextMemory(){
+
+  currentIndex++;
+
+  if(currentIndex >= memories.length){
+    currentIndex = 0;
+  }
+
+  showMemory();
+}
+
+
+function previousMemory(){
+
+  currentIndex--;
+
+  if(currentIndex < 0){
+    currentIndex = memories.length - 1;
+  }
+
+  showMemory();
+}
+
+
+/* ==================================================
+   MUSIC
+================================================== */
+
+const music =
+  document.getElementById("bgMusic");
+
+const musicButton =
+  document.getElementById("musicButton");
+
+music.volume = 1;
+
+
+function toggleMusic(){
+
+  if(music.paused){
+
+    music.play().catch(()=>{});
+
+    musicButton.innerHTML = "🔊 Music On";
+
+  }
+
+  else{
+
+    music.pause();
+
+    musicButton.innerHTML = "🔇 Music Off";
+
+  }
+
+}
+
+
+/* ==================================================
+   PASSWORD
+================================================== */
+
+const CORRECT_PASSWORD = "38812297";
+
+const passwordScreen =
+  document.getElementById("passwordScreen");
+
+const passwordInput =
+  document.getElementById("passwordInput");
+
+const passwordButton =
+  document.getElementById("passwordButton");
+
+const passwordError =
+  document.getElementById("passwordError");
+
+
+function unlockPage(){
+
+  const value =
+    passwordInput.value.trim();
+
+
+  if(value === CORRECT_PASSWORD){
+
+    passwordScreen.style.display = "none";
+
+    document.getElementById("mainPage")
+      .style.display = "block";
+
+    passwordError.textContent = "";
+
+    music.play().then(()=>{
+      musicButton.innerHTML = "🔊 Music On";
+    }).catch(()=>{
+      musicButton.innerHTML = "🎵 Play Music";
+    });
+
+  }
+
+  else{
+
+    passwordError.textContent =
+      "Password galat hai ❤️ Dobara try karo.";
+
+    passwordInput.select();
+
+  }
+
+}
+
+
+passwordButton.addEventListener(
+  "click",
+  unlockPage
+);
+
+
+passwordInput.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Enter"){
+      unlockPage();
+    }
+
+  }
+);
+
+
+/* ==================================================
+   SECOND PAGE
+================================================== */
+
+function openSecondPage(){
+
+  document.getElementById("mainPage")
+    .style.display = "none";
+
+  document.getElementById("secondPage")
+    .classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  startFirstMeetTypewriter();
+}
+
+
+function backToMain(){
+
+  document.getElementById("secondPage")
+    .classList.remove("active");
+
+  document.getElementById("mainPage")
+    .style.display = "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ==================================================
+   PEHLI MULAKAT TYPEWRITER
+================================================== */
+
+const firstMeetText = `Pata hai, hamari pahli mulakat mere liye sirf ek normal din nahi thi... ❤️
+
+Us din shayad mujhe bilkul bhi idea nahi tha ki tum meri zindagi ka itna khoobsurat hissa ban jaogi. Tumse milna, tumse baatein karna aur dheere-dheere tumhe jaan-na... sab kuch apne aap itna special hota chala gaya.
+
+Aaj jab main us pahli mulakat ko yaad karta hoon, toh bas ek hi baat dil mein aati hai — kaash woh pal thoda aur lamba hota. ❤️
+
+Wahi chhota sa pal hamari itni saari beautiful memories ki beginning ban gaya. Aur main dil se thankful hoon ki meri story mein tum aayi. 🥹
+
+Jab Tum mera hath padki thi na jaan to Aisa lag raha tha ki puri duniya ki khushi mujhe mil gayi 
+Us Khushi ko mai kabhi lafjo mein baya nhi kar sakta hu 
+Us time tum mere liye bahut hi Jayda important ho gayi thi 
+Mujhe us time tumhare alawa koi dikh hi nhi Raha tha🤗
+
+In English We Say -
+Our First Meeting was Very Beautiful ❤️
+
+But In Shayrari -
+
+हुई थी तुमसे पहली मुलाकात मगर पूछना तुम्हारा हाल रह गया 
+चाहकर भी तुमसे नजरें नहीं मिला पा रहा था मगर गले तुम्हारे लगना रह गया
+मैं तुम्हें यूँ देखकर कब तक खुश होता रहूँगा
+क्या तुम भी मुझे गले लगाना चाहती थीं ये सवाल रह गया 😘 `;
+
+let firstMeetTimer = null;
+
+
+function startFirstMeetTypewriter(){
+
+  const letter =
+    document.getElementById("typedLetter");
+
+  if(!letter) return;
+
+
+  if(firstMeetTimer){
+    clearInterval(firstMeetTimer);
+  }
+
+
+  letter.innerHTML =
+    `<span id="typewriterText"></span>
+     <span class="typewriter-cursor"></span>`;
+
+
+  const textElement =
+    document.getElementById("typewriterText");
+
+
+  let index = 0;
+
+
+  firstMeetTimer = setInterval(()=>{
+
+    textElement.textContent +=
+      firstMeetText.charAt(index);
+
+    index++;
+
+
+    if(index >= firstMeetText.length){
+
+      clearInterval(firstMeetTimer);
+
+      firstMeetTimer = null;
+
+    }
+
+  },35);
+
+}
+
+
+/* ==================================================
+   KEYBOARD
+================================================== */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(!viewer.classList.contains("active")){
+      return;
+    }
+
+    if(e.key === "Escape"){
+      closeViewer();
+    }
+
+    if(e.key === "ArrowRight"){
+      nextMemory();
+    }
+
+    if(e.key === "ArrowLeft"){
+      previousMemory();
+    }
+
+  }
+);
+
+
+/* ==================================================
+   CLICK OUTSIDE VIEWER
+================================================== */
+
+viewer.addEventListener(
+  "click",
+  function(e){
+
+    if(e.target === viewer){
+      closeViewer();
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>

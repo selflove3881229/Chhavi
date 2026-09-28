@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OUR STORY ❤️</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,"Noto Sans Devanagari",sans-serif;color:#fff}
+body{background:linear-gradient(135deg,#16051d,#35102e,#081b38,#24104b,#430b32);background-size:500% 500%;animation:bg 2s ease-in-out infinite alternate;overflow:hidden}
+@keyframes bg{0%{background-position:0 20%}25%{background-position:70% 0}50%{background-position:100% 70%}75%{background-position:20% 100%}100%{background-position:90% 30%}}
+.page{display:none;position:absolute;inset:0;overflow-y:auto;padding:70px 18px 90px;animation:fade .5s ease}
+.page.active{display:block}@keyframes fade{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:none}}
+.container{max-width:650px;margin:auto;text-align:center}h1{font-size:32px;color:#ffd8e9;text-shadow:0 0 22px #ff4f9a;margin:0 0 10px}h2{color:#ffd7e8}p{line-height:1.8}.sub{color:#ddd;font-size:14px}
+.card,.scrap{background:#ffffff12;border:1px solid #ffffff22;backdrop-filter:blur(12px);box-shadow:0 18px 50px #0008;border-radius:24px}
+.card{padding:20px;margin:18px 0}.big-heart{font-size:75px;animation:pulse 1.4s infinite}@keyframes pulse{50%{transform:scale(1.12)}}
+.next,.wishBtn,.choice,.birthdayLink{border:0;border-radius:999px;padding:14px 24px;background:linear-gradient(135deg,#ff3f8e,#9b4dff,#23cfff);color:white;font-weight:800;box-shadow:0 8px 30px #ff3f8e66;text-decoration:none;display:inline-block;cursor:pointer;margin-top:15px}
+.timeline{text-align:left;border-left:2px solid #ff5b98;padding-left:18px;margin-left:8px}.event{margin-bottom:25px;position:relative}.event:before{content:"❤️";position:absolute;left:-31px;top:0}.date{font-weight:800;color:#ff91ba}
+.memoryPhoto{width:100%;height:300px;object-fit:cover;border-radius:18px;margin:9px 0 12px;border:1px solid #fff3;display:block;cursor:pointer;transition:.3s;box-shadow:0 8px 25px #0005}.memoryPhoto:hover{transform:scale(1.02);box-shadow:0 12px 35px #0008}
+.scrapGrid,.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.scrap{padding:9px;cursor:pointer;transition:.3s}.scrap:nth-child(even){transform:rotate(1deg)}.scrap:nth-child(odd){transform:rotate(-1deg)}.scrap:hover{transform:scale(1.03) rotate(0)}.scrap img{width:100%;height:190px;object-fit:cover;border-radius:16px;background:#201522}.scrapTitle{font-weight:800;padding:10px 3px 5px;color:#ffd8e8}.reason{text-align:left;padding:15px;border-radius:17px;background:#ffffff0d;border:1px solid #fff2}
+input{width:100%;padding:14px;border-radius:14px;border:1px solid #fff3;background:#ffffff0d;color:white;font-size:16px;outline:none;margin:7px 0}.quizQ{font-size:20px;font-weight:800}.msg{color:#ffabc7;font-weight:800;margin-top:10px;line-height:1.7}.msg.correct{color:#8fffc1}.msg.wrong{color:#ffd1df}.wish{margin-top:12px;padding:14px;border:1px dashed #ff8bb5;border-radius:15px}.hidden{display:none}
+.revealBox{width:210px;height:210px;margin:25px auto;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:75px;background:linear-gradient(145deg,#ff3f8e,#792cff,#21cfff);box-shadow:0 20px 65px #ff3f8e66;cursor:pointer;transition:.4s}.revealBox.open{transform:scale(1.08) rotate(2deg)}
+#musicBtn{position:fixed;right:12px;top:12px;z-index:100;border:1px solid #fff3;background:#ffffff16;color:#fff;border-radius:50%;width:44px;height:44px;font-size:19px}
+footer{position:fixed;bottom:0;left:0;right:0;text-align:center;background:#08070ce8;padding:9px;color:#aaa;font-size:11px;z-index:50}
+.modal{position:fixed;inset:0;z-index:200;background:#050308ed;display:none;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}
+.longFrame{width:min(94vw,530px);max-height:94vh;overflow:auto;padding:16px;border-radius:28px;background:linear-gradient(145deg,#421531,#151333,#071d38);border:1px solid #ff9cc455;box-shadow:0 25px 80px #000}
+.memoryFrame{width:min(94vw,560px);max-height:94vh;overflow:auto;border-radius:28px;background:linear-gradient(145deg,#421531,#151333,#071d38);border:1px solid #ff9cc455;box-shadow:0 25px 80px #000;padding:12px;animation:memoryPop .3s ease}
+@keyframes memoryPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.memoryModalPhoto{width:100%;max-height:68vh;object-fit:contain;display:block;border-radius:20px;background:#08050b}
+.memoryModalText{padding:8px 8px 12px;text-align:left}.memoryModalText h2{margin:8px 0;color:#ffd7e8;text-shadow:0 0 15px #ff4f9a}.memoryModalText p{margin:0;color:#fff;font-size:15px;line-height:1.8}
+.longFrame img{width:100%;max-height:850px;object-fit:cover;border-radius:18px}.longFrame video{width:100%;max-height:100vh;margin-top:12px;border-radius:18px;background:#000;display:block;object-fit:contain}.close{float:right;border:0;border-radius:50%;width:38px;height:38px;background:#fff2;color:#fff;font-size:26px;cursor:pointer}
+@media(max-width:480px){.scrapGrid{gap:10px}.scrap img{height:160px}.grid{gap:9px}.reason{padding:12px;font-size:14px}}
+</style>
+</head>
+<body>
+<audio id="song" loop preload="auto" autoplay><source src="music/M3.mp3" type="audio/mpeg"></audio>
+<button id="musicBtn" onclick="toggleMusic()">🔇</button>
+
+<section class="page active" id="p1"><div class="container">
+<div class="big-heart">❤️</div><h1> OUR STORY </h1>
+<p>कुछ यादें ऐसी होती हैं जिन्हें बस याद नहीं किया जाता... उन्हें महसूस किया जाता है।</p>
+<div class="card"><p>Today let's start from where our story began. ✨</p></div>
+<button class="next" onclick="nextPage()">Let's start our story. 💕</button>
+</div></section>
+
+<section class="page" id="p2"><div class="container">
+<h1>The Memory Lane💞</h1><p class="sub">❤️</p>
+<div class="timeline">
+<div class="event"><div class="date">First Pic  ❤️</div><img class="memoryPhoto" src="img/Chhavi1.jpg" onclick="openMemory('img/Chhavi1.jpg','First Pic❤️',' Chhavi Yaad Hai Tumhe Ye pic tumne mujhe pahli Baar bheja tha tab mujhe ye nhi pata tha ki ye pic mere liye itni khash ho jayegi ❤️')" title="Photo खोलने के लिए tap करें"><p>Pahli Baar Baat hone ke baad tumne Ye pic bheja tha </p></div>
+<div class="event"><div class="date">एक नई शुरुआत ✨</div><img class="memoryPhoto" src="img/Chhavi2.jpg" onclick="openMemory('img/Chhavi2.jpg','एक नई शुरुआत ✨','छोटी-छोटी बातें, हँसी-मज़ाक और धीरे-धीरे एक-दूसरे की आदत बन जाना। यही तो हमारी खूबसूरत शुरुआत थी। ✨')" title="Photo खोलने के लिए tap करें"><p>छोटी-छोटी बातें, हँसी-मज़ाक और धीरे-धीरे एक-दूसरे की आदत बन जाना।</p></div>
+<div class="event"><div class="date">Manali 💖</div><img class="memoryPhoto" src="img/Chhavi3.jpg" onclick="openMemory('img/Chhavi3.jpg','Manali 💖','Chhavi Ye tum manali gayi thi Apne doston ke sath Charli di,diyanshi and Muskan tumhari kuch khubsurat yaadein hai chhavi jinhe mai sambhal kar rakha hu 💖')" title="Photo खोलने के लिए tap करें"><p>कितने पल बीत गए, लेकिन कुछ एहसास आज भी वैसे ही हैं।</p></div>
+
+<div class="event"><div class="date">Office Pic 💖</div><img class="memoryPhoto" src="img/Chhavi4.jpg" onclick="openMemory('img/Chhavi4.jpg','Manali 💖','Chhavi tumhe Yaad hai Sayad Tum Jab Second Company Mein working thi tab ki pic hai tumne mujhe bhejta tha achi lag rahi ho isme dekho mujhe ek to confirm nhi h kab ki pic par tum dekhke yaad karna ki kis comaony mein working thi 💖')" title="Photo खोलने के लिए tap करें"><p> कुछ एहसास आज भी वैसे ही हैं।</p></div>
+
+<div class="event"><div class="date">Ring 💖</div><img class="memoryPhoto" src="img/Chhavi5.jpg" onclick="openMemory('img/Chhavi5.jpg','Manali 💖','Chhavi tumhe Yaad hai Ki tumne ye pic kab bheji thi sayad tunhe yaad na mai tunhe yaad dilata hu ki ye pic kab ki hai YE PIC HAI VINEETA KE BIRTHDAY PAR TUM USE RING GIFT KARNA CHAHTI THI To Mai us time Tumse kisi baat par gussa tha to Maine Har jagah se tunhe block kiya tha instagram se block nhi kiya tha tabhi tumne ye pic insta par bhejta tha 💖')" title="Photo खोलने के लिए tap करें"><p> Vineeta के बर्थडे के बाद तुम उसे गिफ्ट करना चाहती थी /p></div>
+
+<div class="event"><div class="date">Cinema 💖</div><img class="memoryPhoto" src="img/Chhavi6.jpg" onclick="openMemory('img/Chhavi6.jpg','Manali 💖','Chhavi tumhe Yaad hai Tum Cinema dekhne Gayi thi ,Tum Divyanshi aur Muskan ke Sath Animal movie Dekhne gayi thi Aur tumne bataya tha ki ye movie Bilkul bhi achi nhi h aur sach batau to chhavi maine aaj tak us movie ko dekha bhi nhi h  💖')" title="Photo खोलने के लिए tap करें"><p>Animal देखने गई थी फ्रेंड्स के साथ </p></div>
+
+</div>
+<button class="next" onclick="nextPage()">Digital Scrapbook 📖</button>
+</div></section>
+
+<section class="page" id="p3"><div class="container">
+<h1>Digital Scrapbook 📖</h1><p class="sub">Photo पर tap करो — long frame में photo + video + shayari खुलेगी ❤️</p>
+<div class="scrapGrid">
+<div class="scrap" onclick="openScrap('img/Chhavi7.jpg','Video/birthday.mp4','एक खूबसूरत याद ❤️',' <br>तुम्हारी आंखों से प्यार कर बैठा हूं,<br/> तुम्हारे चेहरे को निहारकर बैठा हु, <br> न जाने लोग कैसे छोड़ देते है बीच सफ़र में, <br> एक मै हु जो तुम्हीं पर जान हर बैठा हु। 🥰 ')"><img src="img/Chhavi7.jpg"><div class="scrapTitle">Office Canteen Pic ❤️</div></div>
+<div class="scrap" onclick="openScrap('img/Chhavi8.jpg','Video/hua hai aaj.mp4','वो प्यारी सी तस्वीर ✨',' कभी तुम नादान कभी तुम सच्ची लगती हो , <br> कभी तुम मासूम तो कभी तुम बच्ची लगती हो <br> हर चीज अपनी वक़्त पर अच्छी लगती है, <br> और एक तुम हो जो मुझे हर वक्त अच्छी लगती हो 🤗')"><img src="img/Chhavi8.jpg"><div class="scrapTitle">Prem मंदिर Picture ✨</div></div>
+<div class="scrap" onclick="openScrap('img/Chhavi9.jpg','Video/aisi diwangi.mp4','You Are Very Beautiful 😍',' तुम खूबसूरत जैसे चाँद लगती हो <br> तुम नादान पर प्यारी बेहिसाब लगती हो <br> ये कांच का टुकड़ा क्या बताएगा तुम्हे तुम्हारी खूबसूरती, <br> मेरी आंखों से पूछो तुम कितनी लाजवाब लगती हो 😘')"><img src="img/Chhavi9.jpg"><div class="scrapTitle">You are ver Beautiful 😍</div></div>
+<div class="scrap" onclick="openScrap('img/Chhavi10.jpg','Video/hona hai tujhme.mp4',' लापता शख्स 💗','मुझे इश्क़ हैे तुमसे, ये तुमको पता है,<br>मैं नहीं रह सकता तुम्हारे बिना, ये भी तुमको पता है,<br> क्या कहूँ मैं तुम्हारी खामोशियों के बारे में,<br>सब पता होते हुए भी, आज कल तुम लापता है। ।')"><img src="img/Chhavi10.jpg"><div class="scrapTitle">लापता शख्स💗</div></div>
+<div class="scrap" onclick="openScrap('img/Chhavi11.jpg','Video/har safar.mp4','खामोश लफ़्ज़ 🥰','मेरी ज़िंदगी के राज़ में एक राज़ तुम भी <br>हो मेरी ख्वाहिशों की आस में एक आस तुम भी हो<br> तुम क्या हो मेरे लिए, कुछ हो या कुछ भी नहीं<br>मगर मेरी ज़िंदगी के काश में एक काश तुम भी हो,।')"><img src="img/Chhavi11.jpg"><div class="scrapTitle">खामोश लफ़्ज़ 🥰</div></div>
+<div class="scrap" onclick="openScrap('img/Chhavi12.jpg','Video/bahut khubsurat ho.mp4','I Love U❤️',' अगर होना चाहूँ तुम्हारा, तुम होने दोगी क्या?<br>रोना चाहूँ तेरे पास आके, तुम रोने दोगी क्या?<br>चैन नहीं मिल रहा अब मुझे कहीं पे,<br>तुम अपने दिल में चैन से रहने दोगी क्या?,।')"><img src="img/Chhavi12.jpg"><div class="scrapTitle">I Love U ❤️</div></div>
+</div>
+<button class="next" onclick="nextPage()">20 Reasons ❤️</button>
+</div></section>
+
+<div id="memoryModal" class="modal" onclick="closeMemory(event)">
+<div class="memoryFrame" onclick="event.stopPropagation()">
+<button class="close" onclick="closeMemory()">×</button>
+<img id="memoryModalPhoto" class="memoryModalPhoto">
+<div class="memoryModalText">
+<h2 id="memoryModalTitle"></h2>
+<p id="memoryModalText"></p>
+</div>
+</div>
+</div>
+
+<div id="scrapModal" class="modal" onclick="closeScrap(event)">
+<div class="longFrame" onclick="event.stopPropagation()">
+<button class="close" onclick="closeScrap()">×</button>
+<img id="modalPhoto">
+<video id="modalVideo" controls playsinline preload="metadata" webkit-playsinline></video>
+<h2 id="modalTitle"></h2><p id="modalShayari"></p>
+</div></div>
+
+<section class="page" id="p4"><div class="container">
+<h1>20 Reasons Why I Love You ❤️</h1><p>हर वजह अलग है, लेकिन एहसास एक ही है — तुम।</p><div id="reasons" class="grid"></div>
+<button class="next" onclick="nextPage()">A Small Quiz 😄</button>
+</div></section>
+
+<section class="page" id="p5"><div class="container">
+<h1>Interactive Quiz 💘</h1>
+<p class="sub">हर सवाल का जवाब दो — गलत होने पर नीचे सही जवाब भी दिखेगा ❤️</p>
+
+<div class="card">
+<div class="quizQ">1. हम पहली बार कहाँ मिले थे? 😏</div>
+<input id="q1" placeholder="अपना जवाब लिखो...">
+<button class="choice" onclick="checkQuiz('q1','quizMsg1','Basti ❤️')">जवाब देखें ❤️</button>
+<div id="quizMsg1" class="msg"></div>
+</div>
+
+<div class="card">
+<div class="quizQ">2. मेरी तरफ से तुम्हारे लिए सबसे जरूरी चीज़ क्या है?</div>
+<input id="q2" placeholder="एक शब्द में जवाब...">
+<button class="choice" onclick="checkQuiz('q2','quizMsg2','तुम्हारा साथ, प्यार और care ❤️')">जवाब देखें ❤️</button>
+<div id="quizMsg2" class="msg"></div>
+</div>
+
+<div class="card">
+<div class="quizQ">3. Chhavi मेरा सबसे पसंदीदा कलर कौन सा है ? 🥰</div>
+<input id="q3" placeholder="अपना जवाब लिखो...">
+<button class="choice" onclick="checkQuiz('q3','quizMsg3',' Blue  ❤️')">जवाब देखें ❤️</button>
+<div id="quizMsg3" class="msg"></div>
+</div>
+
+<div class="card">
+<div class="quizQ">4. Chhavi तुमने मुझे पहली बार कब इजहार किया था? 💕</div>
+<input id="q4" placeholder="अपना जवाब लिखो...">
+<button class="choice" onclick="checkQuiz('q4','quizMsg4','23 june 2025 ❤️')">जवाब देखें ❤️</button>
+<div id="quizMsg4" class="msg"></div>
+</div>
+
+<div class="card">
+<div class="quizQ">5. Chhavi हम पहली बार किस डेट को मिले थे ? 😘</div>
+<input id="q5" placeholder="अपना जवाब लिखो...">
+<button class="choice" onclick="checkQuiz('q5','quizMsg5',' 12 May 2026 ❤️')">जवाब देखें ❤️</button>
+<div id="quizMsg5" class="msg"></div>
+</div>
+
+<button class="next" onclick="nextPage()">Wish Box 🎁</button>
+</div></section>
+
+<section class="page" id="p6"><div class="container">
+<h1>Virtual Wish Box 🎁</h1><p>दोनों अपनी-अपनी wish यहाँ लिख सकते हो 💌</p>
+<div class="card"><h2>मेरी Wish ❤️</h2><input id="myWish" placeholder="मेरी wish है..."><button class="wishBtn" onclick="saveWish('myWish','myWishResult')">Wish सेव करो 💌</button><div id="myWishResult" class="wish hidden"></div></div>
+<div class="card"><h2>GF की Wish 💖</h2><input id="gfWish" placeholder="तुम्हारी wish है..."><button class="wishBtn" onclick="saveWish('gfWish','gfWishResult')">Wish सेव करो 💌</button><div id="gfWishResult" class="wish hidden"></div></div>
+<button class="next" onclick="nextPage()">आखिरी सरप्राइज ✨</button>
+</div></section>
+
+<section class="page" id="p7"><div class="container">
+<h1>The Grand Reveal 🎀</h1><p>अब इस आखिरी बॉक्स को खोलो...</p><div id="box" class="revealBox" onclick="reveal()">🎁</div>
+<div id="revealText" class="card hidden"><div style="font-size:55px">∞</div><h2>I Love You ❤️</h2><p>आज, कल और हर आने वाले कल में... तुम मेरे लिए हमेशा खास रहोगी।</p><p>यह कहानी यहीं खत्म नहीं होती। असली कहानी तो अभी बाकी है। ✨</p>
+<a class="birthdayLink" href="memory.html">🎂 Birthday Special — Surprise खोलो</a></div>
+</div></section>
+<footer>Made with ❤️ सिर्फ तुम्हारे लिए</footer>
+
+<script>
+let current=1,total=7;
+function showPage(n){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('p'+n).classList.add('active');current=n;document.getElementById('p'+n).scrollTop=0}
+function nextPage(){
+  playSong();
+  if(current<total)showPage(current+1);
+}
+const reasons=["तुम्हारी मुस्कान","तुम्हारी प्यारी बातें","तुम्हारा caring nature","तुम्हारा मुझे समझना","तुम्हारे साथ हँसना","तुम्हारा साथ देना","तुम्हारी छोटी-छोटी बातें","तुम्हारा गुस्सा भी प्यारा है","तुम्हारी आँखों की चमक","तुम्हारे साथ समय जल्दी बीत जाता है","तुम मुझे special feel कराती हो","तुम्हारे साथ हर याद खूबसूरत लगती है","तुम्हारा विश्वास","तुम्हारी simplicity","तुम्हारा होना ही काफी है","तुम्हारा मेरी बात न सुनना","तुम बिना मेकअप भी अच्छी लगती हो","तुम्हारी हर बात मुझसे Share करना","तुम्हारा कभी कभी मेरी बात सुनना","तुम्हारा मुझे शांति से समझाना"];
+reasons.forEach((x,i)=>document.getElementById('reasons').innerHTML+=`<div class="reason"><b>${i+1}.</b> ${x} ❤️</div>`);
+function checkQuiz(inputId,msgId,answer){
+  const input=document.getElementById(inputId),m=document.getElementById(msgId);
+  const v=input.value.trim();
+  if(!v){m.className='msg wrong';m.innerHTML='पहले अपना जवाब तो लिखो ना 😜';return}
+  const normalize=x=>x.toLowerCase().replace(/[\s.,!?।'’"“”❤️💕🥰😘]/g,'');
+  const correct=normalize(v)===normalize(answer);
+  m.className='msg '+(correct?'correct':'wrong');
+  m.innerHTML=correct
+    ? '🎉 बिल्कुल सही जवाब! ❤️'
+    : `❌ <strong>गलत जवाब है!</strong><br><br><strong>सही जवाब:</strong> ${answer}`;
+}
+function saveWish(inputId,outId){
+  const input=document.getElementById(inputId),o=document.getElementById(outId);
+  const v=input.value.trim();
+  if(!v){o.innerHTML='💕 पहले कोई प्यारी सी wish लिखो';o.classList.remove('hidden');return}
+  const key='ourStory_'+inputId;
+  localStorage.setItem(key,v);
+  renderSavedWish(inputId,outId);
+}
+function renderSavedWish(inputId,outId){
+  const v=localStorage.getItem('ourStory_'+inputId);
+  const o=document.getElementById(outId);
+  if(v){
+    const safe=v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    o.innerHTML=`✨ Wish हमेशा के लिए संभाल कर रखी है:<br><br>“${safe}” ❤️`;
+    o.classList.remove('hidden');
+  }
+}
+function reveal(){let b=document.getElementById('box');b.classList.add('open');setTimeout(()=>{b.innerHTML='💖';document.getElementById('revealText').classList.remove('hidden')},350)}
+const song=document.getElementById('song'),musicBtn=document.getElementById('musicBtn');
+function playSong(){song.play().then(()=>musicBtn.textContent='🔊').catch(()=>{})}
+function toggleMusic(){if(song.paused)playSong();else{song.pause();musicBtn.textContent='🔇'}}
+window.addEventListener('DOMContentLoaded',()=>{
+  renderSavedWish('myWish','myWishResult');
+  renderSavedWish('gfWish','gfWishResult');
+  const mySaved=localStorage.getItem('ourStory_myWish');
+  const gfSaved=localStorage.getItem('ourStory_gfWish');
+  if(mySaved) document.getElementById('myWish').value=mySaved;
+  if(gfSaved) document.getElementById('gfWish').value=gfSaved;
+  song.volume=1;
+  playSong();
+  setTimeout(playSong,300);
+  setTimeout(playSong,1000);
+});
+window.addEventListener('pageshow',playSong);
+window.addEventListener('visibilitychange',()=>{if(!document.hidden && song.paused)playSong();});
+function openMemory(photo,title,text){
+if(song.paused) playSong();
+document.getElementById('memoryModalPhoto').src=photo;
+document.getElementById('memoryModalTitle').textContent=title;
+document.getElementById('memoryModalText').textContent=text;
+document.getElementById('memoryModal').classList.add('show');
+}
+function closeMemory(e){
+if(e&&e.target!==document.getElementById('memoryModal'))return;
+document.getElementById('memoryModal').classList.remove('show');
+document.getElementById('memoryModalPhoto').removeAttribute('src');
+if(song.paused) playSong();
+}
+
+function openScrap(photo,video,title,shayari){
+  const modal=document.getElementById('scrapModal');
+  const img=document.getElementById('modalPhoto');
+  const v=document.getElementById('modalVideo');
+
+  song.pause();
+  musicBtn.textContent='🔇';
+
+  img.src=photo;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalShayari').innerHTML=shayari;
+
+  // Reset the player completely, then load the selected card's video.
+  v.pause();
+  v.removeAttribute('src');
+  while(v.firstChild) v.removeChild(v.firstChild);
+  // Videos are stored inside the Video/ folder.
+  // If a full Video/ path is already supplied, don't add it twice.
+  const videoPath = video.startsWith('Video/') ? video : 'Video/' + video;
+  v.src = encodeURI(videoPath);
+  v.load();
+
+  modal.classList.add('show');
+
+  // Try autoplay after the user has tapped the scrapbook card.
+  const startVideo=()=>{
+    const p=v.play();
+    if(p && p.catch) p.catch(()=>{});
+  };
+  setTimeout(startVideo,120);
+}
+
+function closeScrap(e){
+  const modal=document.getElementById('scrapModal');
+  if(e && e.target!==modal)return;
+
+  const v=document.getElementById('modalVideo');
+  v.pause();
+  v.removeAttribute('src');
+  v.load();
+
+  modal.classList.remove('show');
+  playSong();
+}
+</script>
+</body></html>

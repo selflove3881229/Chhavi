@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Beautiful Memories ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    min-height:100vh;
+
+    color:white;
+
+    overflow-x:hidden;
+
+    /*
+    MULTI COLOUR GRADIENT
+    Bahut saare colours ek saath mix
+    */
+
+    background:
+    radial-gradient(circle at 10% 20%,
+        #ff0080 0%,
+        transparent 30%),
+
+    radial-gradient(circle at 90% 10%,
+        #7928ca 0%,
+        transparent 30%),
+
+    radial-gradient(circle at 80% 80%,
+        #00c6ff 0%,
+        transparent 35%),
+
+    radial-gradient(circle at 20% 90%,
+        #00f2fe 0%,
+        transparent 30%),
+
+    radial-gradient(circle at 50% 50%,
+        #ff6a00 0%,
+        #ee0979 30%,
+        #240b36 80%);
+
+    background-size:
+        180% 180%,
+        170% 170%,
+        190% 190%,
+        180% 180%,
+        200% 200%;
+
+    animation:multiGradient 15s ease infinite;
+
+    transition:background 1.5s ease;
+}
+
+
+/*
+================================
+MULTI COLOUR ANIMATION
+================================
+*/
+
+@keyframes multiGradient{
+
+    0%{
+        background-position:
+        0% 50%,
+        100% 0%,
+        100% 100%,
+        0% 100%,
+        50% 50%;
+    }
+
+    25%{
+        background-position:
+        50% 0%,
+        50% 50%,
+        0% 100%,
+        100% 50%,
+        20% 80%;
+    }
+
+    50%{
+        background-position:
+        100% 50%,
+        0% 100%,
+        50% 0%,
+        100% 0%,
+        80% 20%;
+    }
+
+    75%{
+        background-position:
+        50% 100%,
+        100% 50%,
+        0% 0%,
+        50% 100%,
+        30% 30%;
+    }
+
+    100%{
+        background-position:
+        0% 50%,
+        100% 0%,
+        100% 100%,
+        0% 100%,
+        50% 50%;
+    }
+}
+
+
+/*
+================================
+HEADER
+================================
+*/
+
+header{
+
+    text-align:center;
+
+    padding:40px 15px 25px;
+
+}
+
+header h1{
+
+    font-size:clamp(30px,7vw,55px);
+
+    text-shadow:
+    0 4px 15px rgba(0,0,0,.5);
+
+}
+
+header p{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+}
+
+
+/*
+================================
+GALLERY
+================================
+*/
+
+.gallery{
+
+    width:92%;
+
+    max-width:1200px;
+
+    margin:20px auto 45px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+
+/*
+================================
+CARD
+================================
+*/
+
+.card{
+
+    height:280px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.25),
+        rgba(255,255,255,.05)
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.4);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.3);
+
+    transition:.4s;
+
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 20px 50px
+    rgba(0,0,0,.45);
+
+}
+
+.card img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.card::after{
+
+    content:"❤️ Tap to Open";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:20px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+
+}
+
+
+/*
+================================
+MUSIC BUTTON
+================================
+*/
+
+.music-control{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    z-index:100;
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.25);
+
+    color:white;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.4);
+
+}
+
+
+/*
+================================
+NEXT PAGE
+================================
+*/
+
+.next-page-area{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:10px 20px 45px;
+
+}
+
+.next-page-btn{
+
+    display:inline-block;
+
+    padding:15px 38px;
+
+    border-radius:35px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,0,128,.5),
+        rgba(0,198,255,.4),
+        rgba(255,106,0,.5)
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    border:
+    1px solid
+    rgba(255,255,255,.5);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 8px 30px
+    rgba(0,0,0,.35);
+
+    transition:.3s;
+
+}
+
+.next-page-btn:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+/*
+================================
+WEBSITE AGE COUNTER
+================================
+*/
+
+.website-age{
+
+    width:92%;
+
+    max-width:1000px;
+
+    margin:10px auto 35px;
+
+    padding:25px 15px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,0,128,.20),
+        rgba(121,40,202,.20),
+        rgba(0,198,255,.20),
+        rgba(0,242,254,.20),
+        rgba(255,106,0,.20)
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.35);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 10px 35px
+    rgba(0,0,0,.3);
+
+}
+
+.website-age h2{
+
+    font-size:22px;
+
+    margin-bottom:18px;
+
+}
+
+.age-counter{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.time-box{
+
+    min-width:85px;
+
+    padding:12px 10px;
+
+    border-radius:15px;
+
+    background:
+    rgba(255,255,255,.15);
+
+    border:
+    1px solid
+    rgba(255,255,255,.3);
+
+}
+
+.time-number{
+
+    display:block;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+}
+
+.time-label{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:12px;
+
+    opacity:.9;
+
+    text-transform:uppercase;
+
+}
+
+
+/*
+================================
+FOOTER
+================================
+*/
+
+.footer{
+
+    text-align:center;
+
+    padding:0 20px 25px;
+
+    opacity:.85;
+
+}
+
+
+/*
+================================
+POPUP
+================================
+*/
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+    rgba(0,0,0,.78);
+
+    backdrop-filter:blur(10px);
+
+    z-index:50;
+
+}
+
+.popup.active{
+
+    display:flex;
+
+}
+
+.popup-box{
+
+    width:100%;
+
+    max-width:650px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,0,128,.18),
+        rgba(121,40,202,.18),
+        rgba(0,198,255,.18)
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.35);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.6);
+
+    animation:popupIn .5s ease;
+
+}
+
+@keyframes popupIn{
+
+    from{
+
+        transform:scale(.7);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.popup-image{
+
+    width:100%;
+
+    max-height:1000px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+}
+
+
+/*
+================================
+SHAYARI
+================================
+*/
+
+.shayari{
+
+    min-height:150px;
+
+    padding:20px;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    text-shadow:
+    0 2px 8px
+    rgba(0,0,0,.6);
+
+}
+
+.cursor{
+
+    display:inline-block;
+
+    width:2px;
+
+    height:22px;
+
+    background:white;
+
+    margin-left:4px;
+
+    animation:blink .7s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+
+}
+
+
+/*
+================================
+WATCH VIDEO BUTTON
+================================
+*/
+
+.watch-btn{
+
+    display:none;
+
+    margin:15px auto;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#e91e63;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.35);
+
+}
+
+.watch-btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+/*
+================================
+VIDEO
+================================
+*/
+
+ .video-container{
+    display:none;
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    margin:0;
+    padding:18px;
+    background:rgba(0,0,0,.94);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+}
+
+.video-container video{
+    width:100%;
+    height:100%;
+    max-width:100vw;
+    max-height:100vh;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.video-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:46px;
+    height:46px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    color:#fff;
+    font-size:28px;
+    line-height:46px;
+    cursor:pointer;
+    z-index:10000;
+    backdrop-filter:blur(8px);
+}
+
+/*
+================================
+CLOSE
+================================
+*/
+
+.close-btn{
+
+    position:sticky;
+
+    top:0;
+
+    float:right;
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.2);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    z-index:5;
+
+}
+
+
+/*
+================================
+MOBILE
+================================
+*/
+
+@media(max-width:600px){
+
+    .gallery{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:15px;
+
+    }
+
+    .card{
+
+        height:220px;
+
+        border-radius:18px;
+
+    }
+
+    .card::after{
+
+        font-size:14px;
+
+        padding:12px;
+
+    }
+
+    .popup-box{
+
+        padding:18px;
+
+    }
+
+    .shayari{
+
+        font-size:17px;
+
+    }
+
+    .next-page-btn{
+
+        font-size:16px;
+
+        padding:14px 30px;
+
+    }
+
+    .time-box{
+
+        min-width:75px;
+
+    }
+
+    .time-number{
+
+        font-size:21px;
+
+    }
+
+}
+
+
+/*
+================================
+HEART FLOATING EFFECT
+================================
+*/
+
+.heart{
+
+    position:fixed;
+
+    bottom:-30px;
+
+    font-size:20px;
+
+    pointer-events:none;
+
+    animation:
+    heartFloat 6s linear forwards;
+
+    z-index:1;
+
+}
+
+@keyframes heartFloat{
+
+    0%{
+
+        transform:
+        translateY(0)
+        scale(.5)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+        translateY(-110vh)
+        scale(1.4)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     BACKGROUND MUSIC
+================================= -->
+
+<audio id="bgMusic" loop>
+
+    <!-- APNA MUSIC YAHAN RAKHO -->
+
+    <source
+        src="music/Song.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- MUSIC BUTTON -->
+
+<button
+    class="music-control"
+    onclick="toggleMusic()"
+    id="musicBtn">
+
+    🔊
+
+</button>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header>
+
+    <h1>
+        My Beautiful Memories ❤️
+    </h1>
+
+    <p>
+        Kuch yaadein tasveeron mein nahi,
+        dil mein hamesha rehti hain...
+    </p>
+
+</header>
+
+
+<!-- =================================
+     GALLERY
+================================= -->
+
+<div class="gallery">
+
+
+<!-- CARD 1 -->
+
+<div class="card"
+onclick="openCard(
+'img/photo1.jpg',
+`Qatra hoon main tera, tu mera athah samandar hai
+Tere bina main benaam raakh hoon, mera khuda bhi tere andar hai
+Har dhadkan pukare tujhe, jaise pyaasi zameen baarish ko
+Tu mil jaaye toh zindagi, warna har saans ik khanjhar hai.
+❤️`,
+    'Gaurav1.mp4'
+)">
+
+<img src="img/photo1.jpg">
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="card"
+onclick="openCard(
+'img/photo2.jpg',
+`Ki tum pahno agar payal to Mai le aaunga 
+Tum lagao agar bindi to Mai le aaunga
+Ki tum ek baar mango to kuch mai apna sab kuch de kar le aaunga 
+Aur jo ye chand taare tod ke lane ke hote hai ye wade
+Ye sab hai fijul
+Agar fir bhi dekhna ho Chand to Mai tumhare liye aaina le aaunga
+❤️`,
+    'Gaurav2.mp4'
+)">
+
+<img src="img/photo2.jpg">
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="card"
+onclick="openCard(
+'img/photo3.jpg',
+`Dil ki kitab mein gulab tumhara tha 
+Raat ki need mein khawab tumhara tha 
+Jab hmne poocha kitna pyar karti ho mujhse 
+Ji nhi payenge tumhare bina ye jawab tumhara tha💕`,
+    'Gaurav3.mp4'
+)">
+
+<img src="img/photo3.jpg">
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="card"
+onclick="openCard(
+'img/photo4.jpg',
+`Tumse Itni mohobbat ho gayi hai mai chah kar bhi kamkar nhi sakta 
+Tumse meri har roj baat hoti h mai chahkar bhi ise band  kar nhi sakta 
+Mujhe pata hai tum meri nhi ho sakti lekin
+Tumse Itni chaht ho gayi hai mai chahkar bhi tumhe bhoola nhi sakta
+❤️`,
+    'Gaurav4.mp4'
+)">
+
+<img src="img/photo4.jpg">
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="card"
+onclick="openCard(
+'img/photo5.jpg',
+`Aag ke dariya mein utrana abhi baki hai 
+Khud apne katl ka tamasha dekhna abhi baki h 
+Tere jane se to toot hi gaya tha ye dil 
+Par is dil ka pathar hona abhi baki h 
+Kaha poori Hui hai abhi dard ki dastan
+Is aag mein Zinda jalna abhi baki h 
+Jis lab par kabhi mera naam hua karta tha 
+Unhi hothon se kisi aur ka zikra sunna abhi baki h 
+Sare arman to kab ke dafan ho gaye mere 
+Use kisi aur ka hote huye dekhna abhi baki h ✨`,
+    'Gaurav5.mp4'
+)">
+
+<img src="img/photo5.jpg">
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="card"
+onclick="openCard(
+'img/photo6.jpg',
+`Uski ankhon se pyar kar baitha hu
+Uske chehre ko nihar kar baitha hu
+Na jane log kaise chhod dete hai beech safar mein
+Ek mai hu jo us saks par jaan haar baitha hu
+❤️`,
+    'Gaurav6.mp4'
+)">
+
+<img src="img/photo6.jpg">
+
+</div>
+
+<div class="card"
+onclick="openCard(
+'img/Chhavi9.jpg',
+`Aisi koi raat nhi hoti ki jab tumhari yaad nhi hoti 
+Toot jata hu mai jab Khushi hoti aur mohabbat sath nhi hoti 
+Ajeeb kasma kash hai dayre ki 
+Baat to hoti h lekin mulakat nhi hoti
+❤️`,
+    'Gaurav7.mp4'
+)">
+
+<img src="img/Chhavi9.jpg">
+
+</div>
+
+<div class="card"
+onclick="openCard(
+'img/chhavi1.jpg',
+`Mere khowobo ko hakeekat kar paogi kya 
+Mere sath zindagi ke har Safar nibha paogi kya 
+Aaj kal ishq mohobbat pyar to sab karte h 
+Ishq mohobbat pyar to sab karte h 
+Tum meri maa ka khyal rakh paogi kya
+❤️`,
+    'Gaurav8.mp4'
+)">
+
+<img src="img/chhavi1.jpg">
+
+</div>
+
+<div class="card"
+onclick="openCard(
+'img/memory19.jpg',
+`Jo mil na saka uska intezaar kyu hai -2
+Jo mil raha h usse inkaar kyu hai 
+Bada muskil hai samjhna khud ko -2
+Jise fikar hi nhi hamari usse itna pyar kyu hai
+❤️`,
+    'Gaurav9.mp4'
+)">
+
+<img src="img/memory19.jpg">
+
+</div>
+
+<div class="card"
+onclick="openCard(
+'img/memory18.jpg',
+`Tumhi bhi kosish karna hame chahne ki mai kisi ke sath ashiyana banana nhi chahta
+Tum bhi thoda yaad kar lena hame mai kisi gair ki yaadon mein aana nhi chahta
+Maine tumhe pane ki bahut koshish ki
+Tum bhi Thoda kosish kar lena hame pane ki mai kisi gair ke hathon mein jana nhi chahta
+❤️`,
+    'Gaurav10.mp4'
+)">
+
+<img src="img/memory18.jpg">
+
+</div>
+
+<div class="card"
+onclick="openCard(
+'img/memory10.jpg',
+`
+Jo mere paas kabhi nhi ho sakte unhi se mulakat kyu hota hai 
+Jo meri kismat mein nhi ho sakte unhi se pyar kyu hota hai 
+Kyu dekhte hai hum sapne 
+Jo kabhi sach nhi ho sakte unhi ke pure hone ka intezar kyu hota hai 
+❤️`,
+    'Chhavi11.mp4'
+)">
+
+<img src="img/memory10.jpg">
+
+</div>
+
+<div class="card"
+onclick="openCard(
+'img/photo7.jpg',
+`Jo har roj baat Kiya karte the wo ab phone bhi nhi karte 
+Jo har roj phone kiya karte wo ab message bhi nhi karte 
+Kya kahu unke baare mein 
+Jo har roj message Kiya karte wo ab yaad bhi nhi karte
+❤️`,
+    'Gaurav12.mp4'
+)">
+
+<img src="img/photo7.jpg">
+
+</div>
+
+
+</div>
+
+
+<!-- =================================
+     NEXT PAGE
+================================= -->
+
+<div class="next-page-area">
+
+<a
+href="longletter.html"
+class="next-page-btn">
+
+💕 Next Page →
+
+</a>
+
+</div>
+
+
+<!-- =================================
+     WEBSITE AGE
+================================= -->
+
+<div class="website-age">
+
+<h2>
+    ❤️ This Website Has Been Alive For ❤️
+</h2>
+
+
+<div class="age-counter">
+
+
+<div class="time-box">
+
+<span
+id="years"
+class="time-number">
+0
+</span>
+
+<span class="time-label">
+Years
+</span>
+
+</div>
+
+
+<div class="time-box">
+
+<span
+id="months"
+class="time-number">
+0
+</span>
+
+<span class="time-label">
+Months
+</span>
+
+</div>
+
+
+<div class="time-box">
+
+<span
+id="days"
+class="time-number">
+0
+</span>
+
+<span class="time-label">
+Days
+</span>
+
+</div>
+
+
+<div class="time-box">
+
+<span
+id="hours"
+class="time-number">
+0
+</span>
+
+<span class="time-label">
+Hours
+</span>
+
+</div>
+
+
+<div class="time-box">
+
+<span
+id="minutes"
+class="time-number">
+0
+</span>
+
+<span class="time-label">
+Minutes
+</span>
+
+</div>
+
+
+<div class="time-box">
+
+<span
+id="seconds"
+class="time-number">
+0
+</span>
+
+<span class="time-label">
+Seconds
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    Made with ❤️ for beautiful memories
+
+</div>
+
+
+
+<!-- =================================
+     POPUP
+================================= -->
+
+<div
+class="popup"
+id="popup">
+
+<div class="popup-box">
+
+
+<button
+class="close-btn"
+onclick="closeCard()">
+
+×
+
+</button>
+
+
+<img
+id="popupImage"
+class="popup-image"
+src=""
+alt="Memory">
+
+
+<div class="shayari">
+
+<span id="shayariText"></span>
+
+<span class="cursor"></span>
+
+</div>
+
+
+<button
+id="watchBtn"
+class="watch-btn"
+onclick="showVideo()">
+
+🎬 Watch Video ❤️
+
+</button>
+</div>
+
+<div id="videoContainer" class="video-container">
+    <button class="video-close" onclick="closeVideo()" aria-label="Close video">×</button>
+    <video id="memoryVideo" controls playsinline preload="metadata"></video>
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =================================
+   WEBSITE CREATED DATE
+================================= */
+
+/*
+   ⚠️ YAHAN WEBSITE BANNE KI DATE LIKHO
+
+   Example:
+   24 September 2026
+   Time: 00:00:00
+
+   Agar tumhari actual date alag hai
+   to sirf neeche wali date change karo.
+*/
+
+const websiteCreated =
+new Date("2026-09-28T23:59:00");
+
+
+/* =================================
+   LIVE WEBSITE AGE
+================================= */
+
+function updateWebsiteAge(){
+
+    const now = new Date();
+
+    let start = new Date(websiteCreated);
+
+    let years =
+        now.getFullYear() -
+        start.getFullYear();
+
+    let months =
+        now.getMonth() -
+        start.getMonth();
+
+    let days =
+        now.getDate() -
+        start.getDate();
+
+    let hours =
+        now.getHours() -
+        start.getHours();
+
+    let minutes =
+        now.getMinutes() -
+        start.getMinutes();
+
+    let seconds =
+        now.getSeconds() -
+        start.getSeconds();
+
+
+    /* Seconds */
+
+    if(seconds < 0){
+
+        seconds += 60;
+
+        minutes--;
+
+    }
+
+
+    /* Minutes */
+
+    if(minutes < 0){
+
+        minutes += 60;
+
+        hours--;
+
+    }
+
+
+    /* Hours */
+
+    if(hours < 0){
+
+        hours += 24;
+
+        days--;
+
+    }
+
+
+    /* Days */
+
+    if(days < 0){
+
+        const previousMonth =
+            new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                0
+            ).getDate();
+
+        days += previousMonth;
+
+        months--;
+
+    }
+
+
+    /* Months */
+
+    if(months < 0){
+
+        months += 12;
+
+        years--;
+
+    }
+
+
+    /*
+       Counter ko page par show karo
+    */
+
+    document.getElementById("years")
+        .innerText = years;
+
+    document.getElementById("months")
+        .innerText = months;
+
+    document.getElementById("days")
+        .innerText = days;
+
+    document.getElementById("hours")
+        .innerText = hours;
+
+    document.getElementById("minutes")
+        .innerText = minutes;
+
+    document.getElementById("seconds")
+        .innerText = seconds;
+
+}
+
+
+/* Har 1 second update */
+
+updateWebsiteAge();
+
+setInterval(
+    updateWebsiteAge,
+    1000
+);
+
+
+
+/* =================================
+   MUSIC
+================================= */
+
+const bgMusic =
+document.getElementById("bgMusic");
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+let musicStarted = false;
+
+
+/*
+   Mobile browser autoplay restriction
+   ke wajah se first interaction par
+   music start hoga.
+*/
+
+document.addEventListener(
+"click",
+function(){
+
+    if(!musicStarted){
+
+        bgMusic.play()
+        .then(()=>{
+
+            musicStarted = true;
+
+            musicBtn.innerHTML = "🔊";
+
+        })
+        .catch(()=>{});
+
+    }
+
+},
+{once:true}
+);
+
+
+function toggleMusic(){
+
+    if(bgMusic.paused){
+
+        bgMusic.play();
+
+        musicBtn.innerHTML =
+        "🔊";
+
+    }else{
+
+        bgMusic.pause();
+
+        musicBtn.innerHTML =
+        "🔇";
+
+    }
+
+}
+
+
+
+/* =================================
+   10 DIFFERENT GRADIENTS
+================================= */
+
+const gradients = [
+
+`
+radial-gradient(circle at 20% 20%,#ff0080,transparent 30%),
+radial-gradient(circle at 80% 80%,#00c6ff,transparent 35%),
+linear-gradient(135deg,#7928ca,#ff6a00)
+`,
+
+`
+radial-gradient(circle at 10% 90%,#00f2fe,transparent 30%),
+radial-gradient(circle at 90% 10%,#ff0080,transparent 30%),
+linear-gradient(135deg,#7f00ff,#e100ff,#00c6ff)
+`,
+
+`
+radial-gradient(circle at 50% 10%,#f6d365,transparent 30%),
+radial-gradient(circle at 10% 90%,#ff0080,transparent 30%),
+linear-gradient(135deg,#ee0979,#ff6a00,#7928ca)
+`,
+
+`
+radial-gradient(circle at 90% 50%,#00ff87,transparent 30%),
+radial-gradient(circle at 10% 30%,#00c6ff,transparent 30%),
+linear-gradient(135deg,#7f00ff,#00f2fe)
+`,
+
+`
+radial-gradient(circle at 20% 20%,#ff4b1f,transparent 30%),
+radial-gradient(circle at 80% 80%,#1fddff,transparent 30%),
+linear-gradient(135deg,#ff512f,#dd2476,#1fa2ff)
+`,
+
+`
+radial-gradient(circle at 50% 50%,#ff00cc,transparent 30%),
+radial-gradient(circle at 20% 80%,#3333ff,transparent 30%),
+linear-gradient(135deg,#ff0080,#7928ca,#00c6ff)
+`,
+
+`
+radial-gradient(circle at 80% 20%,#00ff87,transparent 30%),
+radial-gradient(circle at 20% 80%,#ff0080,transparent 30%),
+linear-gradient(135deg,#240b36,#c31432,#00c6ff)
+`,
+
+`
+radial-gradient(circle at 50% 0%,#fff700,transparent 30%),
+radial-gradient(circle at 0% 100%,#ff0080,transparent 30%),
+linear-gradient(135deg,#ff6a00,#ee0979,#240b36)
+`,
+
+`
+radial-gradient(circle at 100% 0%,#00f2fe,transparent 30%),
+radial-gradient(circle at 0% 100%,#f953c6,transparent 30%),
+linear-gradient(135deg,#b91d73,#f953c6,#12c2e9)
+`,
+
+`
+radial-gradient(circle at 30% 30%,#00ff87,transparent 30%),
+radial-gradient(circle at 70% 70%,#ff00cc,transparent 30%),
+linear-gradient(135deg,#4776e6,#8e54e9,#ff0080)
+`
+
+];
+
+
+let gradientIndex = 0;
+
+let currentVideo = "";
+
+let typingTimer;
+
+
+
+/* =================================
+   OPEN CARD
+================================= */
+
+function openCard(
+    image,
+    shayari,
+    video
+){
+
+
+    /* Popup open */
+
+    document
+    .getElementById("popup")
+    .classList.add("active");
+
+
+    /* Image */
+
+    document
+    .getElementById("popupImage")
+    .src = image;
+
+
+    /* Save video */
+
+    currentVideo = video;
+
+
+    /* Reset video */
+
+    const videoElement =
+    document.getElementById(
+        "memoryVideo"
+    );
+
+    videoElement.pause();
+
+    videoElement.src = "";
+
+
+    document
+    .getElementById(
+        "videoContainer"
+    )
+    .style.display = "none";
+
+
+    document
+    .getElementById(
+        "watchBtn"
+    )
+    .style.display = "none";
+
+
+    /* Typewriter */
+
+    typeWriter(shayari);
+
+}
+
+
+
+/* =================================
+   TYPEWRITER
+================================= */
+
+function typeWriter(text){
+
+    const element =
+    document.getElementById(
+        "shayariText"
+    );
+
+    element.innerHTML = "";
+
+    clearInterval(typingTimer);
+
+    let index = 0;
+
+
+    typingTimer =
+    setInterval(function(){
+
+        if(index < text.length){
+
+            if(text[index] === "\n"){
+
+                element.innerHTML +=
+                "<br>";
+
+            }else{
+
+                element.innerHTML +=
+                text[index];
+
+            }
+
+            index++;
+
+        }else{
+
+            clearInterval(
+                typingTimer
+            );
+
+
+            setTimeout(
+            function(){
+
+                document
+                .getElementById(
+                    "watchBtn"
+                )
+                .style.display =
+                "block";
+
+            },500);
+
+        }
+
+    },45);
+
+}
+
+
+
+/* =================================
+   WATCH VIDEO
+================================= */
+
+function showVideo(){
+
+    const videoContainer =
+        document.getElementById("videoContainer");
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    // Video source
+    video.src = encodeURI("Video/" + currentVideo);
+
+    // Video screen show
+    videoContainer.style.display = "flex";
+
+    // Background music OFF
+    if(bgMusic){
+        bgMusic.pause();
+        musicBtn.innerHTML = "🔇";
+    }
+
+    // Video PLAY
+    video.play().catch(function(error){
+        console.log("Video play error:", error);
+    });
+}
+
+
+
+function closeVideo(){
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    // Video STOP
+    video.pause();
+    video.currentTime = 0;
+
+    video.removeAttribute("src");
+    video.load();
+
+    // Video screen hide
+    document.getElementById("videoContainer")
+        .style.display = "none";
+
+    // Background music ON
+    if(bgMusic){
+        bgMusic.play().then(function(){
+
+            musicBtn.innerHTML = "🔊";
+
+        }).catch(function(error){
+
+            console.log("Music waiting for user interaction...");
+
+        });
+    }
+}
+
+/* =================================
+   CLOSE CARD
+================================= */
+
+function closeCard(){
+
+    const video =
+    document.getElementById(
+        "memoryVideo"
+    );
+
+
+    /* Stop video */
+
+    video.pause();
+
+    video.currentTime = 0;
+
+    video.src = "";
+
+    document.getElementById("videoContainer")
+        .style.display = "none";
+
+
+    /* Popup close */
+
+    document
+    .getElementById("popup")
+    .classList.remove(
+        "active"
+    );
+
+
+    /* Change gradient */
+
+    gradientIndex++;
+
+    if(
+        gradientIndex >=
+        gradients.length
+    ){
+
+        gradientIndex = 0;
+
+    }
+
+
+    document.body.style.background =
+    gradients[gradientIndex];
+
+
+    /* Music resume */
+
+    bgMusic.play()
+    .then(()=>{
+
+        musicBtn.innerHTML =
+        "🔊";
+
+    })
+    .catch(()=>{});
+
+}
+
+
+
+/* =================================
+   OUTSIDE CLICK
+================================= */
+
+document
+.getElementById("popup")
+.addEventListener(
+"click",
+function(e){
+
+    if(e.target === this){
+
+        closeCard();
+
+    }
+
+});
+
+
+
+/* =================================
+   ESC KEY
+================================= */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+    if(e.key === "Escape"){
+
+        const vc =
+        document.getElementById("videoContainer");
+
+        if(vc.style.display === "flex"){
+            closeVideo();
+        }else{
+            closeCard();
+        }
+
+    }
+
+});
+
+
+
+/* =================================
+   FLOATING HEARTS
+================================= */
+
+function createHeart(){
+
+    const heart =
+    document.createElement(
+        "div"
+    );
+
+    heart.className =
+    "heart";
+
+    heart.innerHTML =
+    ["❤️","💕","💖","💗","💜","💙"]
+    [
+        Math.floor(
+            Math.random()*6
+        )
+    ];
+
+
+    heart.style.left =
+    Math.random()*100 +
+    "%";
+
+
+    heart.style.animationDuration =
+    (4 + Math.random()*4) +
+    "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+    ()=>{
+
+        heart.remove();
+
+    },
+    8000
+    );
+
+}
+
+
+/* Har 1.5 second mein heart */
+
+setInterval(
+    createHeart,
+    1500
+);
+
+
+</script>
+
+</body>
+</html>

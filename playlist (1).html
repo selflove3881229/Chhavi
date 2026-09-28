@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her Music 🎀</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+    color:white;
+    background:
+      radial-gradient(circle at 10% 10%,#ff77b7 0,transparent 30%),
+      radial-gradient(circle at 90% 90%,#8b5cf6 0,transparent 35%),
+      linear-gradient(135deg,#17001f,#3a073b,#12001b);
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.3;
+    background-image:
+      radial-gradient(#fff 1px,transparent 1px);
+    background-size:35px 35px;
+}
+
+header{
+    text-align:center;
+    padding:35px 18px 25px;
+}
+
+header h1{
+    font-size:40px;
+    margin-bottom:8px;
+    text-shadow:0 0 25px #ff7fbd;
+}
+
+header p{
+    color:#ffd4e9;
+    font-size:15px;
+}
+
+/* PLAYLIST GRID */
+
+.playlists{
+    width:92%;
+    max-width:1050px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:
+      repeat(auto-fit,minmax(145px,1fr));
+    gap:18px;
+}
+
+.playlist-card{
+    position:relative;
+    overflow:hidden;
+    min-height:210px;
+    border-radius:25px;
+    border:1px solid #ffffff30;
+    background:#ffffff12;
+    backdrop-filter:blur(15px);
+    cursor:pointer;
+    transition:.35s;
+}
+
+.playlist-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px #ff5ca855;
+}
+
+.playlist-card.active{
+    border:2px solid #ff9bcb;
+    box-shadow:0 0 30px #ff62ad66;
+}
+
+.playlist-card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    display:block;
+}
+
+.playlist-card:after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:90px;
+    height:100px;
+    background:linear-gradient(
+      transparent,
+      rgba(20,0,30,.95)
+    );
+}
+
+.playlist-name{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    z-index:2;
+}
+
+.playlist-name h3{
+    font-size:17px;
+}
+
+.playlist-name span{
+    font-size:12px;
+    color:#ffc6df;
+}
+
+/* PLAYER */
+
+.player{
+    width:92%;
+    max-width:700px;
+    margin:35px auto 110px;
+    padding:25px;
+    border-radius:30px;
+    background:#ffffff12;
+    border:1px solid #ffffff25;
+    backdrop-filter:blur(20px);
+    text-align:center;
+}
+
+.player-cover{
+    width:210px;
+    height:210px;
+    margin:auto;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 50px #0008;
+}
+
+.player-cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.player h2{
+    margin-top:20px;
+    font-size:24px;
+}
+
+.player p{
+    color:#ffc8e0;
+    margin-top:6px;
+}
+
+.progress-box{
+    margin-top:25px;
+}
+
+input[type=range]{
+    width:100%;
+    accent-color:#ff65ae;
+}
+
+.times{
+    display:flex;
+    justify-content:space-between;
+    color:#d9b6cb;
+    font-size:12px;
+}
+
+.controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-top:25px;
+}
+
+.control{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    color:white;
+    background:#ffffff18;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.main-play{
+    width:65px;
+    height:65px;
+    font-size:25px;
+    background:
+      linear-gradient(135deg,#ff5ca7,#9659ed);
+    box-shadow:0 8px 25px #ff4d9b55;
+}
+
+.volume{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.volume input{
+    flex:1;
+}
+
+.status{
+    margin-top:15px;
+    font-size:13px;
+    color:#ffb9d9;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    header h1{
+        font-size:32px;
+    }
+
+    .playlists{
+        grid-template-columns:
+          repeat(2,1fr);
+        gap:12px;
+    }
+
+    .playlist-card{
+        min-height:190px;
+    }
+
+    .playlist-card img{
+        height:140px;
+    }
+
+    .playlist-name{
+        left:11px;
+        bottom:12px;
+    }
+
+    .playlist-name h3{
+        font-size:14px;
+    }
+
+    .player{
+        padding:18px;
+    }
+
+    .player-cover{
+        width:180px;
+        height:180px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎀 Her Music</h1>
+    <p>Seven moods • Six beautiful moments ✨</p>
+</header>
+
+
+<!-- =========================
+     6 PLAYLIST CARDS
+========================= -->
+
+<div class="playlists" id="playlistContainer"></div>
+
+
+<!-- =========================
+     MUSIC PLAYER
+========================= -->
+
+<div class="player">
+
+    <div class="player-cover">
+        <img id="playerImage" src="girl1.jpg">
+    </div>
+
+    <h2 id="songTitle">
+        Soft & Sweet
+    </h2>
+
+    <p id="songArtist">
+        Her Special Playlist 💗
+    </p>
+
+    <div class="progress-box">
+
+        <input
+            type="range"
+            id="progress"
+            min="0"
+            max="100"
+            value="0"
+        >
+
+        <div class="times">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        <button
+            class="control"
+            onclick="previousPlaylist()">
+            ⏮
+        </button>
+
+        <button
+            class="control main-play"
+            id="playButton"
+            onclick="togglePlay()">
+            ▶
+        </button>
+
+        <button
+            class="control"
+            onclick="nextPlaylist()">
+            ⏭
+        </button>
+
+    </div>
+
+
+    <div class="volume">
+
+        🔊
+
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+        >
+
+    </div>
+
+    <div class="status" id="status">
+        Choose a playlist 💕
+    </div>
+
+</div>
+
+
+<audio id="audio"></audio>
+
+
+<script>
+
+/* =====================================================
+   YAHAN 6 PLAYLIST KI PHOTO + SONG SET HAI
+
+   Photo:
+   girl1.jpg
+   girl2.jpg
+   ...
+
+   Song:
+   song1.mp3
+   song2.mp3
+   ...
+
+   Apni files ke naam yahan change kar sakte ho.
+===================================================== */
+
+const playlists = [
+
+    {
+        name:"Fir Mulakaat",
+        image:"img/Chhavi7.jpg",
+        song:"music/master.mp3",
+        artist:"Soft & Sweet 💗"
+    },
+
+    {
+        name:"Mai Agar Kahoon",
+        image:"img/memory8.jpg",
+        song:"music/master1.mp3",
+        artist:"Cute Vibes 🎀"
+    },
+
+    {
+        name:"Dil me ho tum",
+        image:"img/Chhavi8.jpg",
+        song:"music/master2.mp3",
+        artist:"Late Night 🌙"
+    },
+
+    {
+        name:"Ek Samaye",
+        image:"img/photo1.jpg",
+        song:"music/master3.mp3",
+        artist:"Dreamy Songs ✨"
+    },
+
+    {
+        name:"Yaad Hai Na",
+        image:"img/memory29.jpg",
+        song:"music/master4.mp3",
+        artist:"Feel Good 💕"
+    },
+
+    {
+        name:"Huye Bechain",
+        image:"img/Chhavi10.jpg",
+        song:"music/master5.mp3",
+        artist:"Special Memories 💞"
+    },
+    
+    {
+        name:"Sun meri Shahzadi",
+        image:"img/Chhavi11.jpg",
+        song:"music/master6.mp3",
+        artist:"You Feel Good 💞"
+    },
+
+    {
+        name:"Milne hai Mujhse Aayi",
+        image:"img/chhavi1.jpg",
+        song:"music/master7.mp3",
+        artist:"Beautiful Memories 💗"
+    },
+
+];
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let currentPlaylist = 0;
+
+const audio =
+    document.getElementById("audio");
+
+const container =
+    document.getElementById("playlistContainer");
+
+const playerImage =
+    document.getElementById("playerImage");
+
+const songTitle =
+    document.getElementById("songTitle");
+
+const songArtist =
+    document.getElementById("songArtist");
+
+const playButton =
+    document.getElementById("playButton");
+
+const progress =
+    document.getElementById("progress");
+
+const volume =
+    document.getElementById("volume");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
+
+const status =
+    document.getElementById("status");
+
+
+/* =====================================================
+   PLAYLIST CARDS CREATE
+===================================================== */
+
+function createPlaylistCards(){
+
+    container.innerHTML="";
+
+    playlists.forEach((playlist,index)=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "playlist-card " +
+            (index===currentPlaylist
+              ? "active"
+              : "");
+
+        card.innerHTML = `
+
+            <img src="${playlist.image}">
+
+            <div class="playlist-name">
+
+                <h3>
+                    ${playlist.name}
+                </h3>
+
+                <span>
+                    1 Song 🎵
+                </span>
+
+            </div>
+
+        `;
+
+        card.onclick=()=>{
+
+            currentPlaylist=index;
+
+            loadPlaylist(true);
+
+            createPlaylistCards();
+
+        };
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   LOAD PLAYLIST
+===================================================== */
+
+function loadPlaylist(autoplay=false){
+
+    const playlist =
+        playlists[currentPlaylist];
+
+
+    audio.src =
+        playlist.song;
+
+
+    playerImage.src =
+        playlist.image;
+
+
+    songTitle.textContent =
+        playlist.name;
+
+
+    songArtist.textContent =
+        playlist.artist;
+
+
+    progress.value=0;
+
+
+    if(autoplay){
+
+        audio.play()
+        .then(()=>{
+
+            playButton.textContent="❚❚";
+
+            status.textContent =
+                "Now Playing 🎵";
+
+        })
+        .catch(()=>{
+
+            playButton.textContent="▶";
+
+            status.textContent =
+                "Tap Play to start the song";
+
+        });
+
+    }else{
+
+        playButton.textContent="▶";
+
+    }
+
+}
+
+
+/* =====================================================
+   PLAY / PAUSE
+===================================================== */
+
+function togglePlay(){
+
+    if(audio.paused){
+
+        audio.play()
+        .then(()=>{
+
+            playButton.textContent="❚❚";
+
+            status.textContent =
+                "Now Playing 🎵";
+
+        })
+        .catch(()=>{
+
+            status.textContent =
+                "Song file nahi mili ❌";
+
+        });
+
+    }else{
+
+        audio.pause();
+
+        playButton.textContent="▶";
+
+        status.textContent =
+            "Paused ⏸";
+
+    }
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextPlaylist(){
+
+    currentPlaylist++;
+
+    if(currentPlaylist >= playlists.length){
+
+        currentPlaylist=0;
+
+    }
+
+    loadPlaylist(true);
+
+    createPlaylistCards();
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousPlaylist(){
+
+    currentPlaylist--;
+
+    if(currentPlaylist < 0){
+
+        currentPlaylist =
+            playlists.length-1;
+
+    }
+
+    loadPlaylist(true);
+
+    createPlaylistCards();
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+audio.addEventListener(
+    "timeupdate",
+    ()=>{
+
+        if(audio.duration){
+
+            progress.value =
+                (audio.currentTime /
+                audio.duration) * 100;
+
+        }
+
+        currentTime.textContent =
+            formatTime(
+                audio.currentTime
+            );
+
+    }
+);
+
+
+audio.addEventListener(
+    "loadedmetadata",
+    ()=>{
+
+        duration.textContent =
+            formatTime(
+                audio.duration
+            );
+
+    }
+);
+
+
+/* =====================================================
+   SONG END
+===================================================== */
+
+audio.addEventListener(
+    "ended",
+    ()=>{
+
+        /*
+          Ek playlist mein sirf 1 song hai,
+          isliye next playlist automatically chalegi.
+        */
+
+        nextPlaylist();
+
+    }
+);
+
+
+/* =====================================================
+   PROGRESS CLICK
+===================================================== */
+
+progress.addEventListener(
+    "input",
+    ()=>{
+
+        if(audio.duration){
+
+            audio.currentTime =
+                (progress.value / 100)
+                * audio.duration;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   VOLUME
+===================================================== */
+
+volume.addEventListener(
+    "input",
+    ()=>{
+
+        audio.volume =
+            volume.value;
+
+    }
+);
+
+
+/* =====================================================
+   TIME FORMAT
+===================================================== */
+
+function formatTime(seconds){
+
+    if(isNaN(seconds)){
+        return "0:00";
+    }
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secondsPart =
+        Math.floor(seconds % 60)
+        .toString()
+        .padStart(2,"0");
+
+    return minutes +
+        ":" +
+        secondsPart;
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+createPlaylistCards();
+
+loadPlaylist(false);
+
+</script>
+
+</body>
+</html>
