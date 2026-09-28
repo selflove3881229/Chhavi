@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --bg:#171719;
+  --panel:#252528;
+  --panel2:#303034;
+  --text:#fff;
+  --muted:#bdbdc4;
+  --pink:#ff6f9f;
+  --pink2:#ff9ec0;
+  --gold:#e8b26b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; color:var(--text);
+  background:
+    radial-gradient(circle at 15% 5%,rgba(255,105,160,.14),transparent 28%),
+    radial-gradient(circle at 85% 80%,rgba(151,94,255,.12),transparent 30%),
+    var(--bg);
+  font-family:'DM Sans',sans-serif; overflow-x:hidden;
+}
+.topbar{
+  height:64px; display:flex; align-items:center; justify-content:space-between;
+  padding:0 18px; border-bottom:1px solid rgba(255,255,255,.07);
+  position:sticky; top:0; z-index:5; backdrop-filter:blur(14px);
+  background:rgba(20,20,22,.82);
+}
+.brand{font-weight:700; letter-spacing:.2px}.brand span{filter:drop-shadow(0 0 8px rgba(255,95,145,.5))}
+.icon-btn{
+  width:40px;height:40px;border:0;border-radius:12px;color:#ddd;background:#29292c;
+  font-size:20px;cursor:pointer;transition:.2s;
+}
+.icon-btn:hover{transform:translateY(-1px);background:#37373b}
+.app{width:min(760px,94vw);margin:0 auto;padding:28px 0 44px}
+.intro{text-align:center;padding:10px 10px 22px}
+.eyebrow{color:var(--pink2);font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+h1{font-family:'Playfair Display',serif;font-size:clamp(30px,7vw,52px);line-height:1.04;margin:9px 0 12px}
+h1 span{color:#f7c0d3}
+.intro p{max-width:600px;margin:auto;color:var(--muted);line-height:1.6;font-size:14px}
+.card{
+  background:linear-gradient(180deg,#29292c,#242427); border:1px solid rgba(255,255,255,.07);
+  border-radius:22px; padding:16px; box-shadow:0 24px 70px rgba(0,0,0,.3);
+}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 14px}
+.card-head strong{display:block;font-size:15px}.card-head small{display:block;color:#aaa;margin-top:4px;font-size:12px}
+.upload{
+  background:#35353a;border:1px solid rgba(255,255,255,.08);padding:9px 11px;border-radius:11px;
+  font-size:12px;cursor:pointer;white-space:nowrap;color:#eee
+}
+.upload input{display:none}
+.puzzle{
+  width:100%; aspect-ratio:5/6; display:grid; grid-template-columns:repeat(5,1fr);
+  gap:2px; padding:2px; background:#111; border-radius:10px; overflow:hidden; touch-action:manipulation;
+}
+.tile{
+  position:relative; border:0; padding:0; margin:0; cursor:pointer; overflow:hidden;
+  background-repeat:no-repeat; background-size:500% 600%;
+  transition:transform .12s ease,filter .12s ease;
+}
+.tile:not(.empty):active{transform:scale(.97)}
+.tile:hover:not(.empty){filter:brightness(1.08)}
+.tile.empty{background:#151518!important;cursor:default}
+.tile::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.08);pointer-events:none}
+.status{
+  display:flex;align-items:center;justify-content:center;gap:8px;color:#c8c8cd;
+  font-size:12px;min-height:42px;text-align:center
+}
+#statusIcon{font-size:18px}
+.actions{display:flex;gap:9px;margin-top:2px}
+.secondary{
+  flex:1;border:1px solid rgba(255,255,255,.09);background:#343438;color:#eee;border-radius:12px;
+  padding:11px;font-weight:600;cursor:pointer
+}
+.secondary:hover{background:#3d3d42}
+.next-btn{
+  width:100%;margin-top:12px;border:0;border-radius:13px;padding:14px;font-weight:800;
+  color:white;background:linear-gradient(90deg,#e34e82,#a76bff);font-size:15px;
+  box-shadow:0 10px 28px rgba(227,78,130,.2);cursor:pointer;transition:.2s
+}
+.next-btn:disabled{background:#3a3a3e;color:#777;box-shadow:none;cursor:not-allowed}
+.next-btn:not(:disabled):hover{transform:translateY(-1px);filter:brightness(1.06)}
+.locked{text-align:center;color:#777;font-size:11px;margin:9px 0 0}
+.tip{
+  display:flex;gap:11px;align-items:center;justify-content:center;color:#aaa;text-align:left;
+  font-size:12px;line-height:1.5;margin:18px auto 0;width:min(560px,90%)
+}
+.tip span{font-size:22px}.tip b{color:#ddd}
+.win{animation:win .7s ease}
+@keyframes win{0%{transform:scale(.98)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+.heart-float{position:fixed;bottom:-30px;font-size:16px;opacity:0;animation:float 6s linear forwards;pointer-events:none}
+@keyframes float{10%{opacity:.7}100%{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@media(max-width:520px){
+  .app{padding-top:18px}.card{padding:11px;border-radius:18px}
+  .card-head{align-items:flex-start}.upload{font-size:11px;padding:8px}
+  .puzzle{gap:1px;padding:1px}
+  .actions{margin-top:0}.secondary{padding:10px;font-size:12px}
+}
